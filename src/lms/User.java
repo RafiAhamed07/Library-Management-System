@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class User extends Library {
     private String name;
     private int memberId;
+    private final String path = "D:\\LMS\\src\\lms\\user.txt";
 
     public String getName() {
         return name;
@@ -24,7 +25,7 @@ public class User extends Library {
     }
 
     public void Checkuser(String name, int Id) {
-        File file = new File("D:\\LMS\\src\\lms\\user.txt");
+        File file = new File(path);
         boolean userFound = false;
         try {
             Scanner myReader = new Scanner(file);
@@ -58,8 +59,8 @@ public class User extends Library {
             setMemberId(id);
             try {
                 String na = getName();
-                int x = getMemberId();
-                try (FileWriter fw = new FileWriter("D:\\LMS\\src\\lms\\user.txt", true);
+                int x = getMemberId(); 
+                try (FileWriter fw = new FileWriter(path, true);
                      BufferedWriter bw = new BufferedWriter(fw)) {
                     bw.write("\n"+na+" "+x+"\n");
                 } catch (IOException e) {
